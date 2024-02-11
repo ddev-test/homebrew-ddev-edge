@@ -5,15 +5,15 @@
 class Ddev < Formula
   desc "DDEV"
   homepage "https://github.com/ddev/ddev"
-  version "1.22.8-aaa1"
+  version "9.0.1"
   license "Apache 2"
 
   depends_on "mkcert"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.22.8-aaa1/ddev_macos-arm64.v1.22.8-aaa1.tar.gz"
-      sha256 "8d74f1b9e483271f7399f9f59b50d9715acf063fc5b17946ffc5b00a582ddb9f"
+      url "https://github.com/ddev-test/ddev/releases/download/v9.0.1/ddev_macos-arm64.v9.0.1.tar.gz"
+      sha256 "19291c496a3dbce512de0e4005285623f2e37732ea3659aca20a15b87f7ff1b0"
 
       def install
         if build.head?
@@ -34,8 +34,8 @@ class Ddev < Formula
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.22.8-aaa1/ddev_macos-amd64.v1.22.8-aaa1.tar.gz"
-      sha256 "3ced3fb25a85ab6ec794711a8667516b94fb5fb57ed29814af930a36ef25cb84"
+      url "https://github.com/ddev-test/ddev/releases/download/v9.0.1/ddev_macos-amd64.v9.0.1.tar.gz"
+      sha256 "306339d6efcd1b5e21b6bb30cc5e5790937c271090a71e5d1a27994094db14c0"
 
       def install
         if build.head?
@@ -59,8 +59,8 @@ class Ddev < Formula
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.22.8-aaa1/ddev_linux-arm64.v1.22.8-aaa1.tar.gz"
-      sha256 "9f46a84c281e1d3925e3afe42888dd86d288e46f6934347b1826c401642e86e8"
+      url "https://github.com/ddev-test/ddev/releases/download/v9.0.1/ddev_linux-arm64.v9.0.1.tar.gz"
+      sha256 "e8c2ae554c87ddae4efcade802da067ba71136bada6f8b871eabb2504bbcb1da"
 
       def install
         if build.head?
@@ -81,8 +81,8 @@ class Ddev < Formula
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.22.8-aaa1/ddev_linux-amd64.v1.22.8-aaa1.tar.gz"
-      sha256 "e7c98e6f1de80afcc5ce021e45aedfdf5a8f3f3ff23449b3fa284bedc57e7060"
+      url "https://github.com/ddev-test/ddev/releases/download/v9.0.1/ddev_linux-amd64.v9.0.1.tar.gz"
+      sha256 "857a7380f81c72e0ee5eb0473abb6d9a303f2932bce8bccfac883e370e363b76"
 
       def install
         if build.head?
