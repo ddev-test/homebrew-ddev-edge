@@ -5,15 +5,15 @@
 class Ddev < Formula
   desc "DDEV"
   homepage "https://github.com/ddev/ddev"
-  version "1.22.8-aaa4"
+  version "1.22.8-pr5824-goreleaser-fixes"
   license "Apache 2"
 
   depends_on "mkcert"
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.22.8-aaa4/ddev_macos-amd64.v1.22.8-aaa4.tar.gz"
-      sha256 "c7bf33a6f4e04db6dae80b7d8ce32dda59c8434ad974357e6c30f137e834ef4d"
+    if Hardware::CPU.arm?
+      url "https://github.com/ddev-test/ddev/releases/download/v1.22.8-pr5824-goreleaser-fixes/ddev_macos-arm64.v1.22.8-pr5824-goreleaser-fixes.tar.gz"
+      sha256 "f74ff452641c33853bb0f889c4d88caec1a38e5a0b08b1c431e3f97d5f296737"
 
       def install
         if build.head?
@@ -33,9 +33,9 @@ class Ddev < Formula
         end
       end
     end
-    if Hardware::CPU.arm?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.22.8-aaa4/ddev_macos-arm64.v1.22.8-aaa4.tar.gz"
-      sha256 "d1997519d1b192acf523faf75427675b7194c0e954fd5446a818085571b36a17"
+    if Hardware::CPU.intel?
+      url "https://github.com/ddev-test/ddev/releases/download/v1.22.8-pr5824-goreleaser-fixes/ddev_macos-amd64.v1.22.8-pr5824-goreleaser-fixes.tar.gz"
+      sha256 "ea9afafb5620dc8623db4954d2f827f8f96d3a84dd02aa604636bd6e989acdd2"
 
       def install
         if build.head?
@@ -59,8 +59,8 @@ class Ddev < Formula
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.22.8-aaa4/ddev_linux-arm64.v1.22.8-aaa4.tar.gz"
-      sha256 "069bb02a8cb73f9bfd91118f1e2852fddffc6683e62e32f2988d4dc02a384588"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.22.8-pr5824-goreleaser-fixes/ddev_linux-arm64.v1.22.8-pr5824-goreleaser-fixes.tar.gz"
+      sha256 "766eb680823793ee648191896237c46a00904a53bf41cc1cdf79d360eab5720e"
 
       def install
         if build.head?
@@ -81,8 +81,8 @@ class Ddev < Formula
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.22.8-aaa4/ddev_linux-amd64.v1.22.8-aaa4.tar.gz"
-      sha256 "a41627720937680c0980a6a76a7501fc27cf25311a8762e03606d56a18b95f82"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.22.8-pr5824-goreleaser-fixes/ddev_linux-amd64.v1.22.8-pr5824-goreleaser-fixes.tar.gz"
+      sha256 "e6e002f0e121a2b9e2e17f6b9ff88640090f866f82d8ce235f428bf968bcf6b3"
 
       def install
         if build.head?
