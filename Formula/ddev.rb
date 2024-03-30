@@ -5,15 +5,15 @@
 class Ddev < Formula
   desc "DDEV"
   homepage "https://github.com/ddev/ddev"
-  version "1.22.9-aaa7"
+  version "1.22.9-aaa8"
   license "Apache 2"
 
   depends_on "mkcert"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.22.9-aaa7/ddev_macos-amd64.v1.22.9-aaa7.tar.gz"
-      sha256 "fb046d4e643d9e964067218a3fc412535f5261a4ebe5e6dd35c8312187c310a1"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.22.9-aaa8/ddev_macos-amd64.v1.22.9-aaa8.tar.gz"
+      sha256 "79c3abcef1cd5f0964919159bbe0962211ffa8a2bfaf5636f322232283cdb23a"
 
       def install
         if build.head?
@@ -34,8 +34,8 @@ class Ddev < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.22.9-aaa7/ddev_macos-arm64.v1.22.9-aaa7.tar.gz"
-      sha256 "bbbe3217af467e7b728d3c8bbab6b3c5e43320c2001a8ffb969e17d848745ddd"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.22.9-aaa8/ddev_macos-arm64.v1.22.9-aaa8.tar.gz"
+      sha256 "8828cd7b9e69c6a7f66a41e21564c095389283aeb3ea9c008df5b1fa1f2a576e"
 
       def install
         if build.head?
@@ -59,8 +59,8 @@ class Ddev < Formula
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.22.9-aaa7/ddev_linux-amd64.v1.22.9-aaa7.tar.gz"
-      sha256 "451a0161dfcd43b6eaa9369b66a56f21c0e4d955e7556409d7ce2b217c127c67"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.22.9-aaa8/ddev_linux-amd64.v1.22.9-aaa8.tar.gz"
+      sha256 "d476d206aafc8019d2b67faaae435688df12eda0788d2d6de2a7499c1488700f"
 
       def install
         if build.head?
@@ -81,8 +81,8 @@ class Ddev < Formula
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.22.9-aaa7/ddev_linux-arm64.v1.22.9-aaa7.tar.gz"
-      sha256 "63b77e170c77ffd911210a88ef561e3bfbd9490fe22fd8ad8ed85411fecce133"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.22.9-aaa8/ddev_linux-arm64.v1.22.9-aaa8.tar.gz"
+      sha256 "29fa25bca233eb3e4afb72988d70add0afed0754bb6ceec89b857a46023b6da9"
 
       def install
         if build.head?
