@@ -5,15 +5,15 @@
 class Ddev < Formula
   desc "DDEV"
   homepage "https://github.com/ddev/ddev"
-  version "1.22.10-aaa3"
+  version "1.22.11-goreleaser"
   license "Apache 2"
 
   depends_on "mkcert"
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.22.10-aaa3/ddev_macos-amd64.v1.22.10-aaa3.tar.gz"
-      sha256 "5963faea69fddf5f90dda7aae287cbd55153d9a52cb8f2e967933c8ad47342b5"
+    on_intel do
+      url "https://github.com/ddev-test/ddev/releases/download/v1.22.11-goreleaser/ddev_macos-amd64.v1.22.11-goreleaser.tar.gz"
+      sha256 "68c0d275813c141e87014a6994987704f31a6f39296703912118248d96dcc96f"
 
       def install
         if build.head?
@@ -33,9 +33,9 @@ class Ddev < Formula
         end
       end
     end
-    if Hardware::CPU.arm?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.22.10-aaa3/ddev_macos-arm64.v1.22.10-aaa3.tar.gz"
-      sha256 "659ca490527477beadbe7c7e7659c2002eb41d948435a8885cdc3101e6ab9f56"
+    on_arm do
+      url "https://github.com/ddev-test/ddev/releases/download/v1.22.11-goreleaser/ddev_macos-arm64.v1.22.11-goreleaser.tar.gz"
+      sha256 "e4341a0f498db0dacb912ee3b026da574ef1e807121195101a288b17999cb323"
 
       def install
         if build.head?
@@ -58,47 +58,51 @@ class Ddev < Formula
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.22.10-aaa3/ddev_linux-amd64.v1.22.10-aaa3.tar.gz"
-      sha256 "15704cbb151d342a3f0a8e8adc41ea11d8909be764aa4cffe0f230ebce4bcaf1"
+    on_intel do
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/ddev-test/ddev/releases/download/v1.22.11-goreleaser/ddev_linux-amd64.v1.22.11-goreleaser.tar.gz"
+        sha256 "3c1839e4c240d8d249c559e44cca69a52bd1b9813ee11bb6936c299b3aaf3096"
 
-      def install
-        if build.head?
-            os = OS.mac? ? "darwin" : "linux"
-            arch = Hardware::CPU.arm? ? "arm64" : "amd64"
-            system "mkdir", "-p", "#{bin}"
-            system "make", "build", "completions"
-            system "cp", ".gotmp/bin/" + os + "_" + arch + "/ddev", "#{bin}/ddev"
-            bash_completion.install ".gotmp/bin/completions/ddev_bash_completion.sh" => "ddev"
-            zsh_completion.install ".gotmp/bin/completions/ddev_zsh_completion.sh" => "_ddev"
-            fish_completion.install ".gotmp/bin/completions/ddev_fish_completion.sh" => "ddev.fish"
-        else
-            bin.install "ddev"
-            bash_completion.install "ddev_bash_completion.sh" => "ddev"
-            zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
-            fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
+        def install
+          if build.head?
+              os = OS.mac? ? "darwin" : "linux"
+              arch = Hardware::CPU.arm? ? "arm64" : "amd64"
+              system "mkdir", "-p", "#{bin}"
+              system "make", "build", "completions"
+              system "cp", ".gotmp/bin/" + os + "_" + arch + "/ddev", "#{bin}/ddev"
+              bash_completion.install ".gotmp/bin/completions/ddev_bash_completion.sh" => "ddev"
+              zsh_completion.install ".gotmp/bin/completions/ddev_zsh_completion.sh" => "_ddev"
+              fish_completion.install ".gotmp/bin/completions/ddev_fish_completion.sh" => "ddev.fish"
+          else
+              bin.install "ddev"
+              bash_completion.install "ddev_bash_completion.sh" => "ddev"
+              zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
+              fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
+          end
         end
       end
     end
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.22.10-aaa3/ddev_linux-arm64.v1.22.10-aaa3.tar.gz"
-      sha256 "d7d6c93d2aa933253f39a7bc176c83e1f27b0ccb7e60e4ecd8f49b1b0db6bbab"
+    on_arm do
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/ddev-test/ddev/releases/download/v1.22.11-goreleaser/ddev_linux-arm64.v1.22.11-goreleaser.tar.gz"
+        sha256 "b6fd1efb6bd5ae704600893f66269e122c9ba3a421fc05f35ec5347037d12db0"
 
-      def install
-        if build.head?
-            os = OS.mac? ? "darwin" : "linux"
-            arch = Hardware::CPU.arm? ? "arm64" : "amd64"
-            system "mkdir", "-p", "#{bin}"
-            system "make", "build", "completions"
-            system "cp", ".gotmp/bin/" + os + "_" + arch + "/ddev", "#{bin}/ddev"
-            bash_completion.install ".gotmp/bin/completions/ddev_bash_completion.sh" => "ddev"
-            zsh_completion.install ".gotmp/bin/completions/ddev_zsh_completion.sh" => "_ddev"
-            fish_completion.install ".gotmp/bin/completions/ddev_fish_completion.sh" => "ddev.fish"
-        else
-            bin.install "ddev"
-            bash_completion.install "ddev_bash_completion.sh" => "ddev"
-            zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
-            fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
+        def install
+          if build.head?
+              os = OS.mac? ? "darwin" : "linux"
+              arch = Hardware::CPU.arm? ? "arm64" : "amd64"
+              system "mkdir", "-p", "#{bin}"
+              system "make", "build", "completions"
+              system "cp", ".gotmp/bin/" + os + "_" + arch + "/ddev", "#{bin}/ddev"
+              bash_completion.install ".gotmp/bin/completions/ddev_bash_completion.sh" => "ddev"
+              zsh_completion.install ".gotmp/bin/completions/ddev_zsh_completion.sh" => "_ddev"
+              fish_completion.install ".gotmp/bin/completions/ddev_fish_completion.sh" => "ddev.fish"
+          else
+              bin.install "ddev"
+              bash_completion.install "ddev_bash_completion.sh" => "ddev"
+              zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
+              fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
+          end
         end
       end
     end
