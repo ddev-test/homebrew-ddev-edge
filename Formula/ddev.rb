@@ -5,15 +5,15 @@
 class Ddev < Formula
   desc "DDEV"
   homepage "https://github.com/ddev/ddev"
-  version "1.22.11-goreleaser"
+  version "1.22.12-windows-arm64-2"
   license "Apache 2"
 
   depends_on "mkcert"
 
   on_macos do
     on_intel do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.22.11-goreleaser/ddev_macos-amd64.v1.22.11-goreleaser.tar.gz"
-      sha256 "68c0d275813c141e87014a6994987704f31a6f39296703912118248d96dcc96f"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.22.12-windows-arm64-2/ddev_macos-amd64.v1.22.12-windows-arm64-2.tar.gz"
+      sha256 "388d47093a82945b2bed50ad11ef1d955e91b1d7bf175953d3a6860b4f07c758"
 
       def install
         if build.head?
@@ -34,8 +34,8 @@ class Ddev < Formula
       end
     end
     on_arm do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.22.11-goreleaser/ddev_macos-arm64.v1.22.11-goreleaser.tar.gz"
-      sha256 "e4341a0f498db0dacb912ee3b026da574ef1e807121195101a288b17999cb323"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.22.12-windows-arm64-2/ddev_macos-arm64.v1.22.12-windows-arm64-2.tar.gz"
+      sha256 "7d26249c853904b3e0940f07c813f38698f9d7f43bc2fe4fa955341d3866bc3a"
 
       def install
         if build.head?
@@ -60,8 +60,8 @@ class Ddev < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.22.11-goreleaser/ddev_linux-amd64.v1.22.11-goreleaser.tar.gz"
-        sha256 "3c1839e4c240d8d249c559e44cca69a52bd1b9813ee11bb6936c299b3aaf3096"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.22.12-windows-arm64-2/ddev_linux-amd64.v1.22.12-windows-arm64-2.tar.gz"
+        sha256 "a81f6ad5c51aee57c339d7d7f58610e4d664c7b304c475eb5bba8f5f86f9866f"
 
         def install
           if build.head?
@@ -84,8 +84,8 @@ class Ddev < Formula
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.22.11-goreleaser/ddev_linux-arm64.v1.22.11-goreleaser.tar.gz"
-        sha256 "b6fd1efb6bd5ae704600893f66269e122c9ba3a421fc05f35ec5347037d12db0"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.22.12-windows-arm64-2/ddev_linux-arm64.v1.22.12-windows-arm64-2.tar.gz"
+        sha256 "f926e1a36b2457920c246282936b31808f89d6c4f769765d044ae2d870075c26"
 
         def install
           if build.head?
