@@ -5,15 +5,15 @@
 class Ddev < Formula
   desc "DDEV"
   homepage "https://github.com/ddev/ddev"
-  version "1.22.12-windows-arm64-2"
+  version "1.23.5-aaa-test1password.5"
   license "Apache 2"
 
   depends_on "mkcert"
 
   on_macos do
     on_intel do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.22.12-windows-arm64-2/ddev_macos-amd64.v1.22.12-windows-arm64-2.tar.gz"
-      sha256 "388d47093a82945b2bed50ad11ef1d955e91b1d7bf175953d3a6860b4f07c758"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-test1password.5/ddev_macos-amd64.v1.23.5-aaa-test1password.5.tar.gz"
+      sha256 "41e2bf11fed0d591427138175a0568c1baa0dca7078e300e50d054e049068f01"
 
       def install
         if build.head?
@@ -34,8 +34,8 @@ class Ddev < Formula
       end
     end
     on_arm do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.22.12-windows-arm64-2/ddev_macos-arm64.v1.22.12-windows-arm64-2.tar.gz"
-      sha256 "7d26249c853904b3e0940f07c813f38698f9d7f43bc2fe4fa955341d3866bc3a"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-test1password.5/ddev_macos-arm64.v1.23.5-aaa-test1password.5.tar.gz"
+      sha256 "724fe3e2254b2db9d5c185712208ce8e9d0e797c7cd2dc87b8bf63f38ab67aa7"
 
       def install
         if build.head?
@@ -60,8 +60,8 @@ class Ddev < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.22.12-windows-arm64-2/ddev_linux-amd64.v1.22.12-windows-arm64-2.tar.gz"
-        sha256 "a81f6ad5c51aee57c339d7d7f58610e4d664c7b304c475eb5bba8f5f86f9866f"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-test1password.5/ddev_linux-amd64.v1.23.5-aaa-test1password.5.tar.gz"
+        sha256 "6be7cd08acc78796b4fac3fe697d803046c8c8eb06f504bb7856d41aac4ce316"
 
         def install
           if build.head?
@@ -84,8 +84,8 @@ class Ddev < Formula
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.22.12-windows-arm64-2/ddev_linux-arm64.v1.22.12-windows-arm64-2.tar.gz"
-        sha256 "f926e1a36b2457920c246282936b31808f89d6c4f769765d044ae2d870075c26"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-test1password.5/ddev_linux-arm64.v1.23.5-aaa-test1password.5.tar.gz"
+        sha256 "68655151d202a05c96810a28a1d511b654a2dd0a8eb4e79adc92e08ccc61c060"
 
         def install
           if build.head?
