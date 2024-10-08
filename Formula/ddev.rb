@@ -5,15 +5,15 @@
 class Ddev < Formula
   desc "DDEV"
   homepage "https://github.com/ddev/ddev"
-  version "1.23.5-aaa-testwinarm64.3"
+  version "1.23.5-aaa-testwinarm64.4"
   license "Apache 2"
 
   depends_on "mkcert"
 
   on_macos do
     on_intel do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-testwinarm64.3/ddev_macos-amd64.v1.23.5-aaa-testwinarm64.3.tar.gz"
-      sha256 "3faa3c7a933172a48b205acec64282be810ff14b7338c824491ed53dbf1b1bc9"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-testwinarm64.4/ddev_macos-amd64.v1.23.5-aaa-testwinarm64.4.tar.gz"
+      sha256 "c6a68bb1d6259256e0636da89cf1feb8651568a975a70f5043bbc69049af3444"
 
       def install
         if build.head?
@@ -34,8 +34,8 @@ class Ddev < Formula
       end
     end
     on_arm do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-testwinarm64.3/ddev_macos-arm64.v1.23.5-aaa-testwinarm64.3.tar.gz"
-      sha256 "47b445ad5bb97e2f883eb7ae8620aa81efe6f826633e16e6ddfc21d9329d4b56"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-testwinarm64.4/ddev_macos-arm64.v1.23.5-aaa-testwinarm64.4.tar.gz"
+      sha256 "aa0fdaf66c08421296e241fdf368a7931a086e49dd93b83ad92096f75a4e4979"
 
       def install
         if build.head?
@@ -60,8 +60,8 @@ class Ddev < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-testwinarm64.3/ddev_linux-amd64.v1.23.5-aaa-testwinarm64.3.tar.gz"
-        sha256 "636d4f4315a6b73bdcdb63b625f72c685c6183196b543828ac92dacc472e6280"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-testwinarm64.4/ddev_linux-amd64.v1.23.5-aaa-testwinarm64.4.tar.gz"
+        sha256 "2cec3304698529317c7fb24d4271411092f3f89ce1c3d0de2c9f1d0e514cf75d"
 
         def install
           if build.head?
@@ -84,8 +84,8 @@ class Ddev < Formula
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-testwinarm64.3/ddev_linux-arm64.v1.23.5-aaa-testwinarm64.3.tar.gz"
-        sha256 "475a9f60142d05f0ec20d7370ea78450da3d0ef9a2e30bc96a5ef39266e3997a"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-testwinarm64.4/ddev_linux-arm64.v1.23.5-aaa-testwinarm64.4.tar.gz"
+        sha256 "8d8cba2fa7f7271da9c1248bf5a48b45cdcf813c8267a15c72b8f11754eee22f"
 
         def install
           if build.head?
