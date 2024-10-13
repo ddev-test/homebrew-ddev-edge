@@ -5,15 +5,15 @@
 class Ddev < Formula
   desc "DDEV"
   homepage "https://github.com/ddev/ddev"
-  version "1.23.5-aaa-testgitpod.3"
+  version "1.23.5-aaa-testgitpod.4"
   license "Apache 2"
 
   depends_on "mkcert"
 
   on_macos do
     on_intel do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-testgitpod.3/ddev_macos-amd64.v1.23.5-aaa-testgitpod.3.tar.gz"
-      sha256 "653f3456e716b03f72e5287bb9723883fe5c228783dc0c7b78c394aac0b9d95d"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-testgitpod.4/ddev_macos-amd64.v1.23.5-aaa-testgitpod.4.tar.gz"
+      sha256 "799ec8b442746b7709f112e8bc0ebcde408fc420dc8307b54a75a2025c9836d8"
 
       def install
         if build.head?
@@ -34,8 +34,8 @@ class Ddev < Formula
       end
     end
     on_arm do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-testgitpod.3/ddev_macos-arm64.v1.23.5-aaa-testgitpod.3.tar.gz"
-      sha256 "c7e7d7766c08c5e44f0410d277198fd77204387a4686d5c615f7a173f3dff87e"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-testgitpod.4/ddev_macos-arm64.v1.23.5-aaa-testgitpod.4.tar.gz"
+      sha256 "e6ce34fd7f202c4e140e8fff3e0e741442813fd1d39e2646949b8925a12e769d"
 
       def install
         if build.head?
@@ -60,8 +60,8 @@ class Ddev < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-testgitpod.3/ddev_linux-amd64.v1.23.5-aaa-testgitpod.3.tar.gz"
-        sha256 "33ae153d2c31df89ae2565511dcfe267019ffcee8fd6f0bfb8857d85f8564013"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-testgitpod.4/ddev_linux-amd64.v1.23.5-aaa-testgitpod.4.tar.gz"
+        sha256 "f7f6ae7aa0b3366a1b7c9ad81a05df7522efc4348ee236e3ecb230373fd02661"
 
         def install
           if build.head?
@@ -84,8 +84,8 @@ class Ddev < Formula
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-testgitpod.3/ddev_linux-arm64.v1.23.5-aaa-testgitpod.3.tar.gz"
-        sha256 "252a83644dc66cb0137375004202dce61bea3b301264a780f1d1794dc5617620"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-testgitpod.4/ddev_linux-arm64.v1.23.5-aaa-testgitpod.4.tar.gz"
+        sha256 "978d70f46331626b11ee4725199d409d85cdd51281af3319cdeb8e5132974e00"
 
         def install
           if build.head?
