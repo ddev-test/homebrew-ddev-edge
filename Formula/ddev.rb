@@ -5,15 +5,15 @@
 class Ddev < Formula
   desc "DDEV"
   homepage "https://github.com/ddev/ddev"
-  version "1.23.5-aaa-testgitpod.23"
+  version "1.24.0-alpha1"
   license "Apache 2"
 
   depends_on "mkcert"
 
   on_macos do
     on_intel do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-testgitpod.23/ddev_macos-amd64.v1.23.5-aaa-testgitpod.23.tar.gz"
-      sha256 "a03a9319c7d65f4fd01ebc2ba5145f5ece94916590038a055ecc1676c954273d"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.24.0-alpha1/ddev_macos-amd64.v1.24.0-alpha1.tar.gz"
+      sha256 "9d9ecce5b01685099ae8b70f1a4274f90a9cf528be505638e165fadce43bef76"
 
       def install
         if build.head?
@@ -34,8 +34,8 @@ class Ddev < Formula
       end
     end
     on_arm do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-testgitpod.23/ddev_macos-arm64.v1.23.5-aaa-testgitpod.23.tar.gz"
-      sha256 "84c8cdc35d5174895deb518144b021e2c306aeb722e6a7921090f20bc06a9ac1"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.24.0-alpha1/ddev_macos-arm64.v1.24.0-alpha1.tar.gz"
+      sha256 "e2638ef54245d9ec342a8a5d532a9523fea46a3576d9035e6e6be5d31faf5606"
 
       def install
         if build.head?
@@ -60,8 +60,8 @@ class Ddev < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-testgitpod.23/ddev_linux-amd64.v1.23.5-aaa-testgitpod.23.tar.gz"
-        sha256 "4c37e0f143ba56c451f5de605b1039c1715c61ddec50fd973096313a1b543d96"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.24.0-alpha1/ddev_linux-amd64.v1.24.0-alpha1.tar.gz"
+        sha256 "a5ec4fafcd7267ec0d9df2b31818259febeae78f00b9ec9e47d553a329a4fc36"
 
         def install
           if build.head?
@@ -84,8 +84,8 @@ class Ddev < Formula
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.23.5-aaa-testgitpod.23/ddev_linux-arm64.v1.23.5-aaa-testgitpod.23.tar.gz"
-        sha256 "5c3a09ab6e55181b542e58b07d2cb5c0bf52fbd79f2363f67e93b4b293121f9b"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.24.0-alpha1/ddev_linux-arm64.v1.24.0-alpha1.tar.gz"
+        sha256 "dc1619ede0f2f46df8a26f9b5c0dbe23a3bd60857fe01077f0cab7dcad52dc3c"
 
         def install
           if build.head?
@@ -109,8 +109,10 @@ class Ddev < Formula
   end
 
   head "https://github.com/ddev/ddev.git", branch: "master"
-  depends_on "go" => :build
-  depends_on "make" => :build
+  if build.head?
+    depends_on "go" => :build
+    depends_on "make" => :build
+  end
 
   test do
     system "#{bin}/ddev --version"
