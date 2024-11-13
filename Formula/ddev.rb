@@ -5,15 +5,15 @@
 class Ddev < Formula
   desc "DDEV"
   homepage "https://github.com/ddev/ddev"
-  version "1.23.7-alpha3"
+  version "1.23.7-alpha4"
   license "Apache 2"
 
   depends_on "mkcert"
 
   on_macos do
     on_intel do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.7-alpha3/ddev_macos-amd64.v1.23.7-alpha3.tar.gz"
-      sha256 "0361810e6f811a0182f42a3a6394c50f9201e2d9383ee180ded1d8a5d9f814ce"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.7-alpha4/ddev_macos-amd64.v1.23.7-alpha4.tar.gz"
+      sha256 "7133f8675edcb6d07f278a4fd08b044ea618155b198a630b9b87006513984b3b"
 
       def install
         bin.install "ddev"
@@ -24,8 +24,8 @@ class Ddev < Formula
       end
     end
     on_arm do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.7-alpha3/ddev_macos-arm64.v1.23.7-alpha3.tar.gz"
-      sha256 "532e76d1346de472ed2e2b53bb4556740732ccc2ff3aea89c4ff49f59c84ee23"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.7-alpha4/ddev_macos-arm64.v1.23.7-alpha4.tar.gz"
+      sha256 "70267ac6931705ed769c435c9ae3d338d0e1544a7f45d34a881e2dc37ea3432f"
 
       def install
         bin.install "ddev"
@@ -40,8 +40,8 @@ class Ddev < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.23.7-alpha3/ddev_linux-amd64.v1.23.7-alpha3.tar.gz"
-        sha256 "3c6f378baec3d4dbe83a5cd162d6854352b1ab4a5e2d33045a24d8953571ea73"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.23.7-alpha4/ddev_linux-amd64.v1.23.7-alpha4.tar.gz"
+        sha256 "5ad4be10315bfe83ddb51ccf5f401cbac2e75e92db8e219318961437599cbd9e"
 
         def install
           bin.install "ddev"
@@ -54,8 +54,8 @@ class Ddev < Formula
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.23.7-alpha3/ddev_linux-arm64.v1.23.7-alpha3.tar.gz"
-        sha256 "9e43181260474a5e6b6a8c33a66a1538be96f7cfbd1ae15bb4d1bea0c1e2e18c"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.23.7-alpha4/ddev_linux-arm64.v1.23.7-alpha4.tar.gz"
+        sha256 "da5e947f62a15a93dd47fa01a83fc45906abdbc5ab72aa17f90d17787ba80134"
 
         def install
           bin.install "ddev"
@@ -79,19 +79,22 @@ class Ddev < Formula
       os = OS.mac? ? "darwin" : "linux"
       arch = Hardware::CPU.arm? ? "arm64" : "amd64"
 
-      # Get the git commit SHA for versioning
-      git_hash = Utils.git_head
-      version = "HEAD-" + git_hash[0..7]
+      # Build in the git checkout directory
+      cd buildpath do
+        # Get the git commit SHA for versioning
+        git_hash = Utils.git_head
+        version = "HEAD-" + git_hash[0..7]
 
-      system "make", "VERSION=#{version}"
+        system "make", "VERSION=#{version}"
 
-      # Install the compiled binary
-      bin.install ".gotmp/bin/#{os}_#{arch}/ddev"
+        # Install the compiled binary
+        bin.install ".gotmp/bin/#{os}_#{arch}/ddev"
 
-      # Install completions
-      bash_completion.install ".gotmp/bin/completions/ddev_bash_completion.sh" => "ddev"
-      zsh_completion.install ".gotmp/bin/completions/ddev_zsh_completion.sh" => "_ddev"
-      fish_completion.install ".gotmp/bin/completions/ddev_fish_completion.sh" => "ddev.fish"
+        # Install completions
+        bash_completion.install ".gotmp/bin/completions/ddev_bash_completion.sh" => "ddev"
+        zsh_completion.install ".gotmp/bin/completions/ddev_zsh_completion.sh" => "_ddev"
+        fish_completion.install ".gotmp/bin/completions/ddev_fish_completion.sh" => "ddev.fish"
+      end
     end
   end
 
