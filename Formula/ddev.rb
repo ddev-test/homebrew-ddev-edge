@@ -5,26 +5,25 @@
 class Ddev < Formula
   desc "DDEV"
   homepage "https://github.com/ddev/ddev"
-  version "1.23.7-alpha7"
+  version "1.23.8-alpha1"
   license "Apache 2"
 
   depends_on "mkcert"
 
   on_macos do
     on_intel do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.7-alpha7/ddev_macos-amd64.v1.23.7-alpha7.tar.gz"
-      sha256 "e916dc570962366d03b8da14ee503d515af50b5c51ee1eeb826a963fb2239aff"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.8-alpha1/ddev_macos-amd64.v1.23.8-alpha1.tar.gz"
+      sha256 "85bf3fb22885d0e8a08514af2ca41ae2303e2cfd7760b84a7e19e8806167253d"
 
       def install
         if build.head?
-            os = OS.mac? ? "darwin" : "linux"
-            arch = Hardware::CPU.arm? ? "arm64" : "amd64"
-            system "mkdir", "-p", "#{bin}"
-            system "make", "build", "completions"
-            system "cp", ".gotmp/bin/" + os + "_" + arch + "/ddev", "#{bin}/ddev"
-            bash_completion.install ".gotmp/bin/completions/ddev_bash_completion.sh" => "ddev"
-            zsh_completion.install ".gotmp/bin/completions/ddev_zsh_completion.sh" => "_ddev"
-            fish_completion.install ".gotmp/bin/completions/ddev_fish_completion.sh" => "ddev.fish"
+            resource("ddev-binary").stage do
+              system "unzip", "-o", Dir["*.zip"].first if Dir["*.zip"].any?
+              bin.install "ddev"
+              bash_completion.install "ddev_bash_completion.sh" => "ddev"
+              zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
+              fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
+            end
         else
             bin.install "ddev"
             bash_completion.install "ddev_bash_completion.sh" => "ddev"
@@ -34,19 +33,18 @@ class Ddev < Formula
       end
     end
     on_arm do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.7-alpha7/ddev_macos-arm64.v1.23.7-alpha7.tar.gz"
-      sha256 "12c9e87a2fa656a9c55a90aed0f280c84d6a301860ea7d02bf37a602adf956b3"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.8-alpha1/ddev_macos-arm64.v1.23.8-alpha1.tar.gz"
+      sha256 "8d364f987c9bedaf7e4d453b1d43a137f29547f54b5107fa8da733eb44baecdd"
 
       def install
         if build.head?
-            os = OS.mac? ? "darwin" : "linux"
-            arch = Hardware::CPU.arm? ? "arm64" : "amd64"
-            system "mkdir", "-p", "#{bin}"
-            system "make", "build", "completions"
-            system "cp", ".gotmp/bin/" + os + "_" + arch + "/ddev", "#{bin}/ddev"
-            bash_completion.install ".gotmp/bin/completions/ddev_bash_completion.sh" => "ddev"
-            zsh_completion.install ".gotmp/bin/completions/ddev_zsh_completion.sh" => "_ddev"
-            fish_completion.install ".gotmp/bin/completions/ddev_fish_completion.sh" => "ddev.fish"
+            resource("ddev-binary").stage do
+              system "unzip", "-o", Dir["*.zip"].first if Dir["*.zip"].any?
+              bin.install "ddev"
+              bash_completion.install "ddev_bash_completion.sh" => "ddev"
+              zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
+              fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
+            end
         else
             bin.install "ddev"
             bash_completion.install "ddev_bash_completion.sh" => "ddev"
@@ -60,19 +58,18 @@ class Ddev < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.23.7-alpha7/ddev_linux-amd64.v1.23.7-alpha7.tar.gz"
-        sha256 "c5422a83fdb4c949b410666ebfa16ab3a9ea0cb608f0d3535712453759724f51"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.23.8-alpha1/ddev_linux-amd64.v1.23.8-alpha1.tar.gz"
+        sha256 "a18019630978427867b50c917385e4234745827d0f8cad4a255fb413d8a0f7a7"
 
         def install
           if build.head?
-              os = OS.mac? ? "darwin" : "linux"
-              arch = Hardware::CPU.arm? ? "arm64" : "amd64"
-              system "mkdir", "-p", "#{bin}"
-              system "make", "build", "completions"
-              system "cp", ".gotmp/bin/" + os + "_" + arch + "/ddev", "#{bin}/ddev"
-              bash_completion.install ".gotmp/bin/completions/ddev_bash_completion.sh" => "ddev"
-              zsh_completion.install ".gotmp/bin/completions/ddev_zsh_completion.sh" => "_ddev"
-              fish_completion.install ".gotmp/bin/completions/ddev_fish_completion.sh" => "ddev.fish"
+              resource("ddev-binary").stage do
+                system "unzip", "-o", Dir["*.zip"].first if Dir["*.zip"].any?
+                bin.install "ddev"
+                bash_completion.install "ddev_bash_completion.sh" => "ddev"
+                zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
+                fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
+              end
           else
               bin.install "ddev"
               bash_completion.install "ddev_bash_completion.sh" => "ddev"
@@ -84,19 +81,18 @@ class Ddev < Formula
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.23.7-alpha7/ddev_linux-arm64.v1.23.7-alpha7.tar.gz"
-        sha256 "de605259f01ffd313e87c83ab4319734929a1f16b407b4bdd6bbcb9f9a27d8d1"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.23.8-alpha1/ddev_linux-arm64.v1.23.8-alpha1.tar.gz"
+        sha256 "f3bae8308b1687c3035db052b0269d6585e76ec54efc244d979e74bdf3b4d823"
 
         def install
           if build.head?
-              os = OS.mac? ? "darwin" : "linux"
-              arch = Hardware::CPU.arm? ? "arm64" : "amd64"
-              system "mkdir", "-p", "#{bin}"
-              system "make", "build", "completions"
-              system "cp", ".gotmp/bin/" + os + "_" + arch + "/ddev", "#{bin}/ddev"
-              bash_completion.install ".gotmp/bin/completions/ddev_bash_completion.sh" => "ddev"
-              zsh_completion.install ".gotmp/bin/completions/ddev_zsh_completion.sh" => "_ddev"
-              fish_completion.install ".gotmp/bin/completions/ddev_fish_completion.sh" => "ddev.fish"
+              resource("ddev-binary").stage do
+                system "unzip", "-o", Dir["*.zip"].first if Dir["*.zip"].any?
+                bin.install "ddev"
+                bash_completion.install "ddev_bash_completion.sh" => "ddev"
+                zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
+                fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
+              end
           else
               bin.install "ddev"
               bash_completion.install "ddev_bash_completion.sh" => "ddev"
@@ -110,8 +106,13 @@ class Ddev < Formula
 
   head do
     url "https://github.com/ddev/ddev.git", branch: "master"
-    depends_on "go" => :build
-    depends_on "make" => :build
+
+    resource "ddev-binary" do
+      arch = Hardware::CPU.arm? ? "arm64" : "amd64"
+      os = OS.mac? ? "macos" : "linux"
+      url "https://nightly.link/ddev/ddev/workflows/master-build/master/ddev-#{os}-#{arch}.zip"
+      sha256 "" # We'd need to figure out how to handle this for nightlies
+    end
   end
 
   test do
