@@ -5,34 +5,60 @@
 class Ddev < Formula
   desc "DDEV"
   homepage "https://github.com/ddev/ddev"
-  version "1.23.7-alpha5"
+  version "1.23.7-alpha6"
   license "Apache 2"
 
   depends_on "mkcert"
 
   on_macos do
     on_intel do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.7-alpha5/ddev_macos-amd64.v1.23.7-alpha5.tar.gz"
-      sha256 "01f16bcba2068f69ee2aceba1baa6cd9361dcd4a92bf8b79876f48493f6032a9"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.7-alpha6/ddev_macos-amd64.v1.23.7-alpha6.tar.gz"
+      sha256 "731da2f4f01d1ced3c5eb518831d5e8e8ceee2438de5c50331664ad90b31f058"
 
       def install
-        bin.install "ddev"
-        bin.install "ddev_bash_completion.sh"
-        bin.install "ddev_fish_completion.sh"
-        bin.install "ddev_zsh_completion.sh"
-        bin.install "mkcert"
+        if build.head?
+            os = OS.mac? ? "darwin" : "linux"
+            arch = Hardware::CPU.arm? ? "arm64" : "amd64"
+            # Get the git commit SHA for versioning
+            git_hash = Utils.git_head
+            version = "HEAD-" + git_hash[0..7]
+
+            system "make", "VERSION=#{version}"
+            system "cp", ".gotmp/bin/#{os}_#{arch}/ddev", "#{bin}/ddev"
+            bash_completion.install ".gotmp/bin/completions/ddev_bash_completion.sh" => "ddev"
+            zsh_completion.install ".gotmp/bin/completions/ddev_zsh_completion.sh" => "_ddev"
+            fish_completion.install ".gotmp/bin/completions/ddev_fish_completion.sh" => "ddev.fish"
+        else
+            bin.install "ddev"
+            bash_completion.install "ddev_bash_completion.sh" => "ddev"
+            zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
+            fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
+        end
       end
     end
     on_arm do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.7-alpha5/ddev_macos-arm64.v1.23.7-alpha5.tar.gz"
-      sha256 "4b14ba31b50887c11d415aa6095a1ac8834ed0bacdb38cfc15bcadd1465843ed"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.7-alpha6/ddev_macos-arm64.v1.23.7-alpha6.tar.gz"
+      sha256 "830a56920262f9ce78e40cd5483598fa55fb72aa9094986fc544791dd24c6296"
 
       def install
-        bin.install "ddev"
-        bin.install "ddev_bash_completion.sh"
-        bin.install "ddev_fish_completion.sh"
-        bin.install "ddev_zsh_completion.sh"
-        bin.install "mkcert"
+        if build.head?
+            os = OS.mac? ? "darwin" : "linux"
+            arch = Hardware::CPU.arm? ? "arm64" : "amd64"
+            # Get the git commit SHA for versioning
+            git_hash = Utils.git_head
+            version = "HEAD-" + git_hash[0..7]
+
+            system "make", "VERSION=#{version}"
+            system "cp", ".gotmp/bin/#{os}_#{arch}/ddev", "#{bin}/ddev"
+            bash_completion.install ".gotmp/bin/completions/ddev_bash_completion.sh" => "ddev"
+            zsh_completion.install ".gotmp/bin/completions/ddev_zsh_completion.sh" => "_ddev"
+            fish_completion.install ".gotmp/bin/completions/ddev_fish_completion.sh" => "ddev.fish"
+        else
+            bin.install "ddev"
+            bash_completion.install "ddev_bash_completion.sh" => "ddev"
+            zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
+            fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
+        end
       end
     end
   end
@@ -40,29 +66,55 @@ class Ddev < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.23.7-alpha5/ddev_linux-amd64.v1.23.7-alpha5.tar.gz"
-        sha256 "cca367c2594c1c1eac767e183ce868f69d158fe427bccfc48e5a4fda82f4286c"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.23.7-alpha6/ddev_linux-amd64.v1.23.7-alpha6.tar.gz"
+        sha256 "11ca3d2503a4618593594452ebdbdb1f33891ba768d8c18a2a57ef0da3406a86"
 
         def install
-          bin.install "ddev"
-          bin.install "ddev_bash_completion.sh"
-          bin.install "ddev_fish_completion.sh"
-          bin.install "ddev_zsh_completion.sh"
-          bin.install "mkcert"
+          if build.head?
+              os = OS.mac? ? "darwin" : "linux"
+              arch = Hardware::CPU.arm? ? "arm64" : "amd64"
+              # Get the git commit SHA for versioning
+              git_hash = Utils.git_head
+              version = "HEAD-" + git_hash[0..7]
+
+              system "make", "VERSION=#{version}"
+              system "cp", ".gotmp/bin/#{os}_#{arch}/ddev", "#{bin}/ddev"
+              bash_completion.install ".gotmp/bin/completions/ddev_bash_completion.sh" => "ddev"
+              zsh_completion.install ".gotmp/bin/completions/ddev_zsh_completion.sh" => "_ddev"
+              fish_completion.install ".gotmp/bin/completions/ddev_fish_completion.sh" => "ddev.fish"
+          else
+              bin.install "ddev"
+              bash_completion.install "ddev_bash_completion.sh" => "ddev"
+              zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
+              fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
+          end
         end
       end
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.23.7-alpha5/ddev_linux-arm64.v1.23.7-alpha5.tar.gz"
-        sha256 "411ade52360e74503cb84d7df9d7f37189cf68fb0c2e7f61ec5d8f78c19a84d3"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.23.7-alpha6/ddev_linux-arm64.v1.23.7-alpha6.tar.gz"
+        sha256 "7ff2f86e36dccdece85a2092262eafc33383461a41d941e8346368bad6206e4e"
 
         def install
-          bin.install "ddev"
-          bin.install "ddev_bash_completion.sh"
-          bin.install "ddev_fish_completion.sh"
-          bin.install "ddev_zsh_completion.sh"
-          bin.install "mkcert"
+          if build.head?
+              os = OS.mac? ? "darwin" : "linux"
+              arch = Hardware::CPU.arm? ? "arm64" : "amd64"
+              # Get the git commit SHA for versioning
+              git_hash = Utils.git_head
+              version = "HEAD-" + git_hash[0..7]
+
+              system "make", "VERSION=#{version}"
+              system "cp", ".gotmp/bin/#{os}_#{arch}/ddev", "#{bin}/ddev"
+              bash_completion.install ".gotmp/bin/completions/ddev_bash_completion.sh" => "ddev"
+              zsh_completion.install ".gotmp/bin/completions/ddev_zsh_completion.sh" => "_ddev"
+              fish_completion.install ".gotmp/bin/completions/ddev_fish_completion.sh" => "ddev.fish"
+          else
+              bin.install "ddev"
+              bash_completion.install "ddev_bash_completion.sh" => "ddev"
+              zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
+              fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
+          end
         end
       end
     end
@@ -72,37 +124,6 @@ class Ddev < Formula
     url "https://github.com/ddev/ddev.git", branch: "master"
     depends_on "go" => :build
     depends_on "make" => :build
-
-    def install
-      ENV["GOPATH"] = buildpath
-      ENV["GOBIN"] = buildpath
-      os = OS.mac? ? "darwin" : "linux"
-      arch = Hardware::CPU.arm? ? "arm64" : "amd64"
-
-      # Change to the git checkout directory, which is the last component of the URL
-      cd("ddev") do
-        # Get the git commit SHA for versioning
-        git_hash = Utils.git_head
-        version = "HEAD-" + git_hash[0..7]
-
-        system "make", "VERSION=#{version}"
-
-        # Install the compiled binary
-        bin.install ".gotmp/bin/#{os}_#{arch}/ddev"
-
-        # Install completions
-        bash_completion.install ".gotmp/bin/completions/ddev_bash_completion.sh" => "ddev"
-        zsh_completion.install ".gotmp/bin/completions/ddev_zsh_completion.sh" => "_ddev"
-        fish_completion.install ".gotmp/bin/completions/ddev_fish_completion.sh" => "ddev.fish"
-      end
-    end
-  end
-
-  def install
-    bin.install "ddev"
-    bash_completion.install "ddev_bash_completion.sh" => "ddev"
-    zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
-    fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
   end
 
   test do
