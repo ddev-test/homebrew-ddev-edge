@@ -5,24 +5,22 @@
 class Ddev < Formula
   desc "DDEV"
   homepage "https://github.com/ddev/ddev"
-  version "1.23.8-alpha1"
+  version "1.23.8-alpha2"
   license "Apache 2"
 
   depends_on "mkcert"
 
   on_macos do
     on_intel do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.8-alpha1/ddev_macos-amd64.v1.23.8-alpha1.tar.gz"
-      sha256 "85bf3fb22885d0e8a08514af2ca41ae2303e2cfd7760b84a7e19e8806167253d"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.8-alpha2/ddev_macos-amd64.v1.23.8-alpha2.tar.gz"
+      sha256 "44d324da6595e2151648ab4787c72b5bc6e9968b7bbad6aca6343b05b8ca03a8"
 
       def install
         if build.head?
             resource("ddev-binary").stage do
               system "unzip", "-o", Dir["*.zip"].first if Dir["*.zip"].any?
               bin.install "ddev"
-              bash_completion.install "ddev_bash_completion.sh" => "ddev"
-              zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
-              fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
+              # In the future, we could get and install the completion files
             end
         else
             bin.install "ddev"
@@ -33,17 +31,15 @@ class Ddev < Formula
       end
     end
     on_arm do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.8-alpha1/ddev_macos-arm64.v1.23.8-alpha1.tar.gz"
-      sha256 "8d364f987c9bedaf7e4d453b1d43a137f29547f54b5107fa8da733eb44baecdd"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.8-alpha2/ddev_macos-arm64.v1.23.8-alpha2.tar.gz"
+      sha256 "897de162bb1f0d6edf65330c51c7880d38f3bd7d66a3629ba8f97ac613f5283d"
 
       def install
         if build.head?
             resource("ddev-binary").stage do
               system "unzip", "-o", Dir["*.zip"].first if Dir["*.zip"].any?
               bin.install "ddev"
-              bash_completion.install "ddev_bash_completion.sh" => "ddev"
-              zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
-              fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
+              # In the future, we could get and install the completion files
             end
         else
             bin.install "ddev"
@@ -58,17 +54,15 @@ class Ddev < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.23.8-alpha1/ddev_linux-amd64.v1.23.8-alpha1.tar.gz"
-        sha256 "a18019630978427867b50c917385e4234745827d0f8cad4a255fb413d8a0f7a7"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.23.8-alpha2/ddev_linux-amd64.v1.23.8-alpha2.tar.gz"
+        sha256 "44c95e23b22c1c8183126b284583033929091505037e7cd29d94407270f0dbbc"
 
         def install
           if build.head?
               resource("ddev-binary").stage do
                 system "unzip", "-o", Dir["*.zip"].first if Dir["*.zip"].any?
                 bin.install "ddev"
-                bash_completion.install "ddev_bash_completion.sh" => "ddev"
-                zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
-                fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
+                # In the future, we could get and install the completion files
               end
           else
               bin.install "ddev"
@@ -81,17 +75,15 @@ class Ddev < Formula
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.23.8-alpha1/ddev_linux-arm64.v1.23.8-alpha1.tar.gz"
-        sha256 "f3bae8308b1687c3035db052b0269d6585e76ec54efc244d979e74bdf3b4d823"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.23.8-alpha2/ddev_linux-arm64.v1.23.8-alpha2.tar.gz"
+        sha256 "1d3287d762458fd8cc9243d3a3ad28d01a20f14c02c15ad9a92d5eaefee2b9f3"
 
         def install
           if build.head?
               resource("ddev-binary").stage do
                 system "unzip", "-o", Dir["*.zip"].first if Dir["*.zip"].any?
                 bin.install "ddev"
-                bash_completion.install "ddev_bash_completion.sh" => "ddev"
-                zsh_completion.install "ddev_zsh_completion.sh" => "_ddev"
-                fish_completion.install "ddev_fish_completion.sh" => "ddev.fish"
+                # In the future, we could get and install the completion files
               end
           else
               bin.install "ddev"
