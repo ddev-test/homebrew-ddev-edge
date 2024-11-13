@@ -5,15 +5,15 @@
 class Ddev < Formula
   desc "DDEV"
   homepage "https://github.com/ddev/ddev"
-  version "1.23.7-alpha4"
+  version "1.23.7-alpha5"
   license "Apache 2"
 
   depends_on "mkcert"
 
   on_macos do
     on_intel do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.7-alpha4/ddev_macos-amd64.v1.23.7-alpha4.tar.gz"
-      sha256 "7133f8675edcb6d07f278a4fd08b044ea618155b198a630b9b87006513984b3b"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.7-alpha5/ddev_macos-amd64.v1.23.7-alpha5.tar.gz"
+      sha256 "01f16bcba2068f69ee2aceba1baa6cd9361dcd4a92bf8b79876f48493f6032a9"
 
       def install
         bin.install "ddev"
@@ -24,8 +24,8 @@ class Ddev < Formula
       end
     end
     on_arm do
-      url "https://github.com/ddev-test/ddev/releases/download/v1.23.7-alpha4/ddev_macos-arm64.v1.23.7-alpha4.tar.gz"
-      sha256 "70267ac6931705ed769c435c9ae3d338d0e1544a7f45d34a881e2dc37ea3432f"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.23.7-alpha5/ddev_macos-arm64.v1.23.7-alpha5.tar.gz"
+      sha256 "4b14ba31b50887c11d415aa6095a1ac8834ed0bacdb38cfc15bcadd1465843ed"
 
       def install
         bin.install "ddev"
@@ -40,8 +40,8 @@ class Ddev < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.23.7-alpha4/ddev_linux-amd64.v1.23.7-alpha4.tar.gz"
-        sha256 "5ad4be10315bfe83ddb51ccf5f401cbac2e75e92db8e219318961437599cbd9e"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.23.7-alpha5/ddev_linux-amd64.v1.23.7-alpha5.tar.gz"
+        sha256 "cca367c2594c1c1eac767e183ce868f69d158fe427bccfc48e5a4fda82f4286c"
 
         def install
           bin.install "ddev"
@@ -54,8 +54,8 @@ class Ddev < Formula
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/ddev-test/ddev/releases/download/v1.23.7-alpha4/ddev_linux-arm64.v1.23.7-alpha4.tar.gz"
-        sha256 "da5e947f62a15a93dd47fa01a83fc45906abdbc5ab72aa17f90d17787ba80134"
+        url "https://github.com/ddev-test/ddev/releases/download/v1.23.7-alpha5/ddev_linux-arm64.v1.23.7-alpha5.tar.gz"
+        sha256 "411ade52360e74503cb84d7df9d7f37189cf68fb0c2e7f61ec5d8f78c19a84d3"
 
         def install
           bin.install "ddev"
@@ -79,8 +79,8 @@ class Ddev < Formula
       os = OS.mac? ? "darwin" : "linux"
       arch = Hardware::CPU.arm? ? "arm64" : "amd64"
 
-      # Build in the git checkout directory
-      cd buildpath do
+      # Change to the git checkout directory, which is the last component of the URL
+      cd("ddev") do
         # Get the git commit SHA for versioning
         git_hash = Utils.git_head
         version = "HEAD-" + git_hash[0..7]
