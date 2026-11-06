@@ -5,15 +5,15 @@
 class DdevEdge < Formula
   desc "DDEV"
   homepage "https://github.com/ddev-test/ddev"
-  version "1.108.1-draftflow1"
+  version "1.108.1-draftflow2"
   license "Apache 2"
 
   depends_on "mkcert"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.108.1-draftflow1/ddev_macos-amd64.v1.108.1-draftflow1.tar.gz"
-      sha256 "cc8f2d2ee47f33cfa10463c5bc44f757813aae1eb8e0618c99830cd806472e33"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.108.1-draftflow2/ddev_macos-amd64.v1.108.1-draftflow2.tar.gz"
+      sha256 "35abb2e3bdd8da480b2977f9a2790a245189dddae4fa736509eedb43b31c779c"
 
       define_method(:install) do
         if build.head?
@@ -38,8 +38,8 @@ class DdevEdge < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.108.1-draftflow1/ddev_macos-arm64.v1.108.1-draftflow1.tar.gz"
-      sha256 "cb1f1a6e56732949ae2fc3ba6b52b3d3e529298a98d4d8c57f5e5cc02b3ec04e"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.108.1-draftflow2/ddev_macos-arm64.v1.108.1-draftflow2.tar.gz"
+      sha256 "ff2a3d41f7cda7d499d31fa49ee4687a505810920a318ffc47fe301d514331b6"
 
       define_method(:install) do
         if build.head?
@@ -67,8 +67,8 @@ class DdevEdge < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.108.1-draftflow1/ddev_linux-amd64.v1.108.1-draftflow1.tar.gz"
-      sha256 "0236ba6d460591c249123befcecf47844c43a010f4f85a89685dfbe084a60e35"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.108.1-draftflow2/ddev_linux-amd64.v1.108.1-draftflow2.tar.gz"
+      sha256 "bc2ecdc98ce84d4853eade8bf11bf4ed2236cb4101c47631648683bf56d7dfd5"
       define_method(:install) do
         if build.head?
             system "sh", "-c", "git fetch --unshallow >/dev/null 2>&1" if File.exist?("#{HOMEBREW_REPOSITORY}/.git/shallow")
@@ -92,8 +92,8 @@ class DdevEdge < Formula
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/ddev-test/ddev/releases/download/v1.108.1-draftflow1/ddev_linux-arm64.v1.108.1-draftflow1.tar.gz"
-      sha256 "369c7ce86787c2222e04d20e3042243e9bba1e8bb22df7ce83733caedea8fab8"
+      url "https://github.com/ddev-test/ddev/releases/download/v1.108.1-draftflow2/ddev_linux-arm64.v1.108.1-draftflow2.tar.gz"
+      sha256 "1f723d6f67ed35d24cf910e8d6522ce9fb00b5d05ed18165e25b63064ec67780"
       define_method(:install) do
         if build.head?
             system "sh", "-c", "git fetch --unshallow >/dev/null 2>&1" if File.exist?("#{HOMEBREW_REPOSITORY}/.git/shallow")
